@@ -11,7 +11,9 @@ This code implements a very simple trending wall for fashion brands on Tumblr, b
 ## To run...
 
 * Clone the repository to your machine
-* Run npm install
+* Run npm install, to install node packages
+* Run **node scripts/generate-csdl.js** to generate the CSDL definition to **stream.csdl**.
+* Copy the contents of **stream.csdl** into a new DataSift stream. Save the stream, and make a note of the resulting stream hash.
 * Create a config.json file in the project root
 
 ```javascript
@@ -20,7 +22,7 @@ This code implements a very simple trending wall for fashion brands on Tumblr, b
     "datasift": {
         "username": "[your DataSift user name]",
         "apikey": "[your DataSift API key]",
-        "stream": "[stream GUID created above]"
+        "stream": "[stream hash from above]"
     },
     "store":
     {
@@ -35,4 +37,6 @@ This code implements a very simple trending wall for fashion brands on Tumblr, b
 }
 ```
 
+* Check your Redis server is running
 * Run **node app.js**
+* Open your browser to **http://localhost:8000** (or whatever port you specified)
