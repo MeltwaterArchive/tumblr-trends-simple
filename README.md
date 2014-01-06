@@ -1,5 +1,4 @@
 # Simple Tumblr Trending Wall
-====================
 
 This code implements a very simple trending wall for fashion brands on Tumblr, by consuming a [DataSift](http://datasift.com) stream. 
 
