@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+        <meta charset="utf-8">
+        <title>Tumblr Trend Wall</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href="styles.css" rel="stylesheet">
+    
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="dynamic-bubble-chart.js"></script>
+
+        <script>
+
+          var socket = io.connect();
+          var chart = null;
+
+          $(function() { 
+              chart = new DynamicBubbleChart('#chart');
+
+              socket.on('results', function (data) {
+                  chart.update(data);
+              });
+          });
+
+      	</script>
+  
+</head>
+<body>
+        <h1>Top Fashion Brands on Tumblr</h1>
+        <div id='chart'></div>
+</body>
+</html>
