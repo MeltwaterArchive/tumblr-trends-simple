@@ -19,7 +19,7 @@ Tumblr is a great data source for measuring engagement with products and brands.
 
 * Clone the repository to your machine
 * Run **npm install**, to install node packages
-* Run **node scripts/generate-csdl.js** to generate the CSDL definition to **stream.csdl**.
+* Run **node scripts/generate-csdl.js data/brands.csv** to generate the CSDL definition to **stream.csdl**.
 * Copy the contents of **stream.csdl** into a new DataSift stream. Save the stream, and make a note of the resulting stream hash.
 * Create a config.json file in the project root
 

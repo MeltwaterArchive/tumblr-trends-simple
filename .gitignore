@@ -1,7 +1,6 @@
 lib-cov
 *.seed
 *.log
-*.csv
 *.dat
 *.out
 *.pid
@@ -9,6 +8,7 @@ lib-cov
 *.DS_Store
 
 pids
+
 logs
 results
 
