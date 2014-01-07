@@ -1,10 +1,15 @@
+// This class uses d3 to generate a dynamic bubble chart. 
+// Requires d3 (http://d3js.org) to be available in context as 'd3'.
+
 function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,labelFormatter,options)
 {
+	// Default properties
 	this.width = 800;
 	this.height = 600;
 	this.duration = 500;
 	this.fill = d3.scale.category20c();
 
+	// Overrides by options param
 	if(options)
 	{
 		if(options.width)
@@ -56,6 +61,8 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 
 	this.format = d3.format(",d");
 
+
+	// Sets and updates the chart data
 	this.update = function(data) {
 	    
 	    console.log(data);
@@ -85,6 +92,7 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 	        .attr("font-size", this.formatLabel)
 	        .text($this.labelAccessor);
 
+	    // Only do this if not first time
         if(this.firstRenderCompleted)
         {
         	// Remove any items that no longer exist
@@ -95,14 +103,14 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 			// Move bubble node to new position
 			var trans = join.transition().duration(this.duration);
 
-			// update position
+			// Update position
 			trans.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
 			    
-			// update circle radius
+			// Update circle radius
 			trans.select("circle")
 				.attr("r", function(d) { return d.r; });
 
-			// update text size
+			// Update text size
 			trans.select("text").attr("font-size", this.formatLabel);        	
         }
 

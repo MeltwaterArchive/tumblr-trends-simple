@@ -3,13 +3,15 @@ var csv = require('node-csv').createParser();
 var urls = new Array();
 var csdl = "";
 
+// Check command line arguments
 if(!process.argv[2])
 {
 	console.log("USAGE: node generate-csdl.js [path to data file]");
 	process.exit(1);
 }
 
-console.log("Reading brands CSV...");
+// Read CSV file
+console.log("Reading data from CSV file:" + process.argv[2]);
 
 csv.parseFile(process.argv[2], function(err, data) {
 

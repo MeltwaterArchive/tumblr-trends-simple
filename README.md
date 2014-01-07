@@ -1,17 +1,24 @@
 # Simple Tumblr Trending Wall
 
-This code implements a very simple trending wall for fashion brands on Tumblr, by consuming a [DataSift](http://datasift.com) stream. 
+This code demonstrates a very simple trending wall for fashion brands on Tumblr, by consuming a [DataSift](http://datasift.com) stream. 
 
-## Pre-requisites
+The application relies heavily on two excellent libraries to do the heavy lifting:
+
+* [Node-Redis-Timeseries](https://github.com/tonyskn/node-redis-timeseries)
+* [D3](http://d3js.org) 
+
+Tumblr is a great data source for measuring engagement with products and brands. In this case I've chosen fashion brands, and the number of reblogs their original content generates.
+
+## Pre-Requisites
 
 * A local (or accessible) Redis server
 * [Node.js](http://nodejs.org/) installed
 * A [DataSift account](http://datasift.com/auth/register) (if you register you get some free credit to play with!)
 
-## To run...
+## Running the Application
 
 * Clone the repository to your machine
-* Run npm install, to install node packages
+* Run **npm install**, to install node packages
 * Run **node scripts/generate-csdl.js** to generate the CSDL definition to **stream.csdl**.
 * Copy the contents of **stream.csdl** into a new DataSift stream. Save the stream, and make a note of the resulting stream hash.
 * Create a config.json file in the project root
