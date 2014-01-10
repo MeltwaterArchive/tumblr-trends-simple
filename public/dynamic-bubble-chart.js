@@ -7,6 +7,7 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 	this.width = 800;
 	this.height = 600;
 	this.duration = 500;
+	this.maxLabelLength = 10;
 	this.fill = d3.scale.category20c();
 
 	// Overrides by options param
@@ -23,6 +24,9 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 
 		if(options.fill)
 			this.fill = options.fill;
+
+		if(options.maxLabelLength)
+			this.fill = options.maxLabelLength;
 	}
 
 	if(valueAccessor)
@@ -87,17 +91,19 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
         	.attr("r", function (d) { return d.r; })
         	.style("fill", function (d) { return $this.fill($this.labelAccessor(d)); });
 
-        newItems.append("text")
-        	.attr("text-anchor", "middle")
-	        .attr("font-size", this.formatLabel)
-	        .text($this.labelAccessor);
+        newItems.each($this.appendLabel);
+        
+        // newItems.append("text")
+        // 	.attr("text-anchor", "middle")
+	       //  .attr("font-size", this.formatLabel)
+	       //  .text($this.labelAccessor);
+
 
 	    // Only do this if not first time
         if(this.firstRenderCompleted)
         {
         	// Remove any items that no longer exist
         	join.exit()
-        		.selectAll("g")
         		.remove();
 
 			// Move bubble node to new position
@@ -111,15 +117,65 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 				.attr("r", function(d) { return d.r; });
 
 			// Update text size
-			trans.select("text").attr("font-size", this.formatLabel);        	
+			trans.select("text").attr("font-size", function(d) { return $this.fontSize(d) + "em" });        	
         }
 
 	    this.firstRenderCompleted = true;
 
 	};
 
-	this.formatLabel = function(d) {
-		return ((d.r / 60)) + "em";
+	this.fontSize = function(d) {
+		return ((d.r / 60));
 	};
+
+	this.appendLabel = function(d,i) {
+
+		var label = $this.labelAccessor(d);
+		var fontSize = $this.fontSize(d);
+
+		var labelEl = document.createElementNS("http://www.w3.org/2000/svg", 'text');
+    	labelEl.setAttribute("text-anchor","middle");
+    	labelEl.setAttribute("font-size",fontSize + "em");
+
+		// Short labels can go on one line
+		if(label.length <= $this.maxLabelLength)
+		{
+	    	labelEl.appendChild(document.createTextNode(label));
+		}
+		// Long labels need to be split
+		else
+		{
+			var words = label.split(" ");
+			var labelPart = "";
+			var lineCount = 0;
+
+			words.forEach(
+					function(word,i)
+					{
+						if(labelPart.length > 0) labelPart += " ";
+						labelPart += word;
+
+						// If full line, or last word do text element
+						if((labelPart.length + word.length) >= $this.maxLabelLength 
+							|| (i-1) == words.length)
+						{
+							var line = document.createElementNS("http://www.w3.org/2000/svg", 'tspan');
+					    	line.appendChild(document.createTextNode(labelPart));
+					    	line.setAttribute("dy", 16*fontSize);
+					    	line.setAttribute("x", 0);
+					    	labelEl.appendChild(line);
+							labelPart = "";
+
+							lineCount++;
+						}
+					}
+				);
+
+
+			labelEl.setAttribute("y",fontSize * lineCount * -9);
+		}
+
+		this.appendChild(labelEl);
+	}
 
 }
