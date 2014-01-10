@@ -17,6 +17,7 @@ Tumblr is a great data source for measuring engagement with products and brands.
 
 ## Running the Application
 
+* Make sure you have the [Tumblr data source](http://datasift.com/source/53/tumblr) activated in you DataSift account
 * Clone the repository to your machine
 * Run **npm install**, to install node packages
 * Run **node scripts/generate-csdl.js data/brands.csv** to generate the CSDL definition to **stream.csdl**.
@@ -34,8 +35,8 @@ Tumblr is a great data source for measuring engagement with products and brands.
     "store":
     {
         "prefix": "[prefix for keys in Redis, e.g. wall1]",
-        "host": "[redis host, e.g. 127.0.0.1]",
-        "port": [redis post, e.g. 6379]
+        "host": "[redis server address, e.g. 127.0.0.1]",
+        "port": [redis port, e.g. 6379]
     },
     "publishing":
     {

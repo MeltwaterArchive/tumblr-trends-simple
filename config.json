@@ -1,0 +1,18 @@
+{
+    "port": "[port to run a local webserver, e.g. 8000]",
+    "datasift": {
+        "username": "[your DataSift user name]",
+        "apikey": "[your DataSift API key]",
+        "stream": "[stream hash from above]"
+    },
+    "store":
+    {
+        "prefix": "[prefix for keys in Redis, e.g. wall1]",
+        "host": "[redis host, e.g. 127.0.0.1]",
+        "port": [redis post, e.g. 6379]
+    },
+    "publishing":
+    {
+        "interval": [in milliseconds the time between pushes of results to the front-end, e.g. 5000]
+    }
+}
