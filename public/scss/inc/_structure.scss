@@ -1,0 +1,98 @@
+@import 'inc/variables';
+
+/* Structure */
+html {
+	height: 100%;
+}
+
+body {
+	background: #29282D;
+	color:$site-color;
+	font:100 14px/1.5 $font-family-default;
+	height:100%;
+}
+
+/*
+Defines the grid layout used for the sites CSS structure
+Page is our center aligned 95% width container. We have set it's 'position' as relative
+so that the Gridpak overlay will appear in the correct position. We have also updated
+the gridpak.js file to use '.block' as it's container.
+*/
+
+section {margin:0 auto; max-width:1040px; min-width:800px; position:relative;}
+
+/* Reusable column setup */
+.col {border:0px solid rgba(0,0,0,0); border-left-width:30px; float:left; position:relative;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	background-clip:padding-box !important;
+	-moz-background-clip:padding-box !important;
+	-webkit-background-clip:padding-box !important;
+}
+.col a {display:inline-block;}
+.col a img {display:block;}
+.col a {position:relative;}
+
+.row {margin-left:-30px;}
+
+.one {width:8.33333333333%;}
+.two {width:16.6666666667%;}
+.three {width:25.0%;}
+.four {width:33.3333333333%;}
+.five {width:41.6666666667%;}
+.six {width:50.0%;}
+.seven {width:58.3333333333%;}
+.eight {width:66.6666666667%;}
+.nine {width:75.0%;}
+.ten {width:83.3333333333%;}
+.eleven {width:91.6666666667%;}
+.twelve {width:100%;}
+
+
+/* Mobile */
+@media screen and (min-width: 0px) and (max-width: 319px) {
+	section {padding:0 20px;}
+	.row {margin-left:-12px;}
+	.col {border-left-width:12px; padding:0 12px;}
+
+	.one {width:50%;}
+	.two,
+	.col {margin-left:0; width:100%;}
+}
+
+
+/* Tablet */
+@media screen and (min-width: 320px) and (max-width: 767px) {
+	section {padding:0 30px;}
+	.col {padding:0 2%; width:100%;}
+	.row .col:first-child {margin-left:0;}
+
+	.one {width:15.0%;}
+	.two {width:32.0%;}
+	.three {width:49.0%;}
+	.four {width:100%;}
+	.five {width:100%;}
+	.six {margin-left:0; width:100%;}
+}
+
+
+/* Monitor */
+@media screen and (min-width: 768px) {
+	section {padding:0 61px;}
+	.row {margin-left:-12px;}
+	.col {border-left-width:12px;}
+
+	.one {width:8.33333333333%;}
+	.two {width:16.6666666667%;}
+	.three {width:25.0%;}
+	.four {width:33.3333333333%;}
+	.five {width:41.6666666667%;}
+	.six {width:50.0%;}
+	.seven {width:58.3333333333%;}
+	.eight {width:66.6666666667%;}
+	.nine {width:75.0%;}
+	.ten {width:83.3333333333%;}
+	.eleven {width:91.6666666667%;}
+	.twelve {margin-left:0; width:100%;}
+}

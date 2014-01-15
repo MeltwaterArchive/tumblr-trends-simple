@@ -1,0 +1,47 @@
+@import 'inc/variables';
+
+/* =============================================================================
+   Fonts
+   ========================================================================== */
+
+@font-face {
+    font-family: 'chunkfive';
+    src: url('../font/chunkfive/regular.eot');
+    src: url('../font/chunkfive/regular.eot?#iefix') format('embedded-opentype'),
+         url('../font/chunkfive/regular.ttf') format('truetype'),
+         url('../font/chunkfive/regular.svg#chunkfive') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5 {
+	color:$site-color;
+	font-weight:100;
+	font-size:60px;
+	line-height:68px;
+	text-shadow:0px 2px 1px black;
+}
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover {}
+
+h1 {
+	font-size:50px;
+	margin:50px 0 0;
+	text-align:center;
+}
+
+h2 {
+	font-size:20px;
+	margin:15px 0 10px;
+	text-align:center;
+}
+
+a {
+	color:$orange;
+	text-decoration:none;
+	@include vendor(transition, color 300ms ease-in);
+
+	&:hover {
+		color:$light-orange;
+	};
+}
