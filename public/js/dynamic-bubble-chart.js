@@ -69,8 +69,6 @@ function DynamicBubbleChart(selector,keyAccessor,valueAccessor,labelAccessor,lab
 	// Sets and updates the chart data
 	this.update = function(data) {
 	    
-	    console.log(data);
-
 	    if(data.length == 0)
 	    {
 	    	console.log("Ignoring empty data set.");
