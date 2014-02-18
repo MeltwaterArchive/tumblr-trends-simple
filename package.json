@@ -6,7 +6,7 @@
     {
     	"node-csv": "*",
     	"socket.io": "*",
-    	"datasift": "*",
+    	"datasift-node": "*",
     	"express": "3.x",
     	"ejs": "*",
         "redis-timeseries": "*",
