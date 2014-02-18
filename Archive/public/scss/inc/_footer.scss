@@ -1,0 +1,18 @@
+@import 'inc/variables';
+
+/* Footer */
+footer {
+	padding:30px 0;
+
+	.follow-up {
+		text-align:center;
+	}
+
+	.logo {
+		text-align:center;
+
+		img {
+			display:block;			
+		}
+	}
+}
